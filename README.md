@@ -2,8 +2,8 @@
 
 [![npm](https://img.shields.io/npm/v/react-with-stable?style=flat-square)](https://www.npmjs.com/package/react-with-stable)
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/react-with-stable?style=flat-square)](https://bundlephobia.com/result?p=react-with-stable)
-[![npm type definitions](https://img.shields.io/npm/types/typescript?style=flat-square)](https://github.com/oney/react-with-stable/blob/main/src/index.ts)
-[![GitHub](https://img.shields.io/github/license/oney/react-with-stable?style=flat-square)](https://github.com/oney/react-with-stable/blob/main/LICENSE)
+[![npm type definitions](https://img.shields.io/npm/types/typescript?style=flat-square)](https://github.com/oney/react-with-stable/blob/master/src/index.tsx)
+[![GitHub](https://img.shields.io/github/license/oney/react-with-stable?style=flat-square)](https://github.com/oney/react-with-stable/blob/master/LICENSE)
 
 This package provides stable identity inline callback when passing props.
 
@@ -27,7 +27,7 @@ export default function App() {
 }
 ```
 No matter how `text` state changes, the Event component never re-renders because `onClick` is declared as a stable prop.  
-But when `onClick` fires as event handler, it will get latest `text` value.
+But when `onClick` fires as an event handler, it will get latest `text` value.
 
 Note: don't use `onClick` in effects or rendering.
 
