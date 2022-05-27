@@ -13,7 +13,7 @@ Please ⭐ star this repo if it's useful!
 ```jsx
 import { withStable } from "react-with-stable";
 
-const Event = withStable(["onClick"], ({ onClick }) => (
+const Event = withStable(new Set(["onClick"]), ({ onClick }) => (
   <button onClick={onClick}>click</button>
 ));
 
@@ -29,7 +29,7 @@ export default function App() {
 }
 ```
 No matter how `text` state changes, the Event component never re-renders because `onClick` is declared as a stable prop.  
-But when `onClick` fires as an event handler, it will get latest `text` value.
+But when `onClick` fires as an event handler, it will get the latest `text` value.
 
 Note: don't use `onClick` in effects or rendering.
 
@@ -39,6 +39,6 @@ Please check [this codesandbox example](https://codesandbox.io/s/withstable-hoc-
 ## Explanation
 This package basically does the same thing as `useEventHandler` like [many](https://github.com/Volune/use-event-callback) [community](https://ahooks.js.org/hooks/use-memoized-fn) [implementaion](https://reactjs.org/docs/hooks-faq.html#how-to-read-an-often-changing-value-from-usecallback) and [`useEvent` RFC](https://github.com/reactjs/rfcs/pull/220) the React team is working on. The difference is that it wraps callbacks in HOC, so it can provide stable identity for **inline callback** where hook methods can't achieve it.
 
-You have to explicitly provide stable prop keys in the first parameter of `withStable` like `withStable(["onClick"],`. This is actually better in concept in most scenario because it should be the callback consumer (i.e. `Event` component) to know this prop (`onClick`) is stable and only used in events.
+You have to explicitly provide stable prop keys in the first parameter of `withStable` like `withStable(new Set(["onClick"]),`. This is actually better in concept in most scenario because it should be the callback consumer (i.e. `Event` component) to know this prop (`onClick`) is stable and only used in events.
 
 This package doesn't solve the old values in closure problem in effects, so I believe `useEvent` RFC should still be essential.
