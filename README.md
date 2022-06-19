@@ -28,7 +28,7 @@ function Chat() {
 No matter how `text` state changes, the `Chat` component never re-renders because `onClick` is declared as a stable prop.  
 But when `onClick` fires as an event handler, it will get the latest `text` value.
 
-Note: don't use `onClick` in effects or rendering.
+Note: don't use `onClick` in rendering.
 
 ## Stable inline callback for render or effect
 ```jsx
