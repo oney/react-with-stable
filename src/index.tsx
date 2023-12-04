@@ -5,6 +5,8 @@ export const Prefix = '__react-with-stable__';
 export const StableSymbol = `${Prefix}StableSymbol`;
 export const DepsSymbol = `${Prefix}DepsSymbol`;
 
+export type PropsOf<T> = T extends React.ComponentType<infer P> ? P : never;
+
 export function areEqual(a: any, b: any): boolean {
   if (
     !(
@@ -25,7 +27,7 @@ export function areEqual(a: any, b: any): boolean {
 }
 
 export function withStable<T extends ComponentType<any>>(
-  stableKeys: string[],
+  stableKeys: (keyof PropsOf<T>)[],
   Component: T
 ): MemoExoticComponent<T> {
   const stableSet = new Set(stableKeys);
